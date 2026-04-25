@@ -12,7 +12,7 @@ Rather than learning an opaque message-passing representation, WG-SRC constructs
 
 The key point is dual use: the same fitted white-box scaffold both predicts node labels and produces a node-level mechanism atlas. By aggregating this atlas, WG-SRC yields operational feature fingerprints of graph datasets, describing raw-feature reliance, low-pass propagation reliance, high-pass sensitivity, class-subspace complexity, and ridge-boundary dependence.
 
-> The main contribution is not only a competitive white-box node classifier, but a fitted predictive scaffold that converts graph datasets into measurable operational fingerprints.
+> The main contribution is not only a accurate white-box node classifier, but a fitted predictive scaffold that converts graph datasets into measurable operational fingerprints.
 
 ---
 
