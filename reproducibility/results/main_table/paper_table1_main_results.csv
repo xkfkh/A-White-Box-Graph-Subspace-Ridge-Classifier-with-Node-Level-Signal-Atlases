@@ -1,0 +1,8 @@
+﻿dataset,strongest_baseline,baseline_mean,baseline_std,wgsrc_mean,wgsrc_std,gain_pp
+Amazon-Computers,GraphSAGE,76.84,2.28,78.71,1.15,1.87
+Amazon-Photo,GraphSAGE,88.37,1.86,88.76,1.35,0.39
+Chameleon,LINKX,71.56,1.49,72.48,1.85,0.92
+Cornell,GraphSAGE,72.43,6.47,75.41,7.26,2.97
+Texas,GraphSAGE,84.32,4.73,86.32,4.08,1.99
+Wisconsin,GraphSAGE,83.33,5.25,84.31,4.24,0.98
+Average,-,79.48,,81.0,,1.52
