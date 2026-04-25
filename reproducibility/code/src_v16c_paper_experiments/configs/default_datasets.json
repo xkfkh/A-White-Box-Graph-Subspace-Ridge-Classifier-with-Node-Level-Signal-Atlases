@@ -1,0 +1,5 @@
+{
+  "default_datasets": ["chameleon", "squirrel", "cornell", "texas", "wisconsin", "amazon-photo", "amazon-computers"],
+  "excluded_by_default": ["actor"],
+  "note": "Actor is excluded by default because the user noted it may be very large. Pass --datasets actor explicitly if needed."
+}

@@ -1,0 +1,18 @@
+﻿{
+  "paper_datasets": [
+    "amazon-computers",
+    "amazon-photo",
+    "chameleon",
+    "cornell",
+    "texas",
+    "wisconsin"
+  ],
+  "optional_datasets": [
+    "squirrel",
+    "actor"
+  ],
+  "excluded_from_main_paper": [
+    "squirrel",
+    "actor"
+  ]
+}
