@@ -1,0 +1,11 @@
+﻿paper_item,source_file,description,latex_label,source_type
+Figure 1,figures/pdf/fig_method_schematic.pdf,WG-SRC pipeline schematic,fig:method,external PDF
+Figure 2,figures/pdf/fig_main_gain.pdf,Main comparison gain over strongest baseline,fig:main-gain,external PDF
+Figure 3,figures/pdf/fig_paired_split_delta.pdf,Paired split-level accuracy differences,fig:paired-delta,external PDF
+Figure 4,figures/pdf/fig_signal_simplex.pdf,Graph-signal simplex,fig:signal-simplex,external PDF
+Figure 5,figures/pdf/fig_node_signal_phase_portraits.pdf,Dense node-level signal phase portraits,fig:signal-phase,external PDF
+Figure 6,figures/pdf/fig_decision_margin_phase.pdf,PCA–Ridge decision phase map,fig:decision-phase,external PDF
+Figure 7,figures/pdf/fig_class_geometry_complexity.pdf,Class-subspace geometry complexity,fig:class-geometry,external PDF
+Figure 8,figures/pdf/fig_error_signal_shift.pdf,Error signal shift: wrong minus correct high-pass share,fig:error-shift,external PDF
+Figure 9,figures/tikz/figure9_atlas_guided_diagnosis_tikz.tex,Mechanism atlas as a dataset diagnostic probe,fig:atlas-guided-diagnosis,extracted TikZ source from main.tex
+Figure 10,figures/pdf/fig_chameleon_subspace_confusion.pdf,Chameleon class-pair geometry and confusion constellation,fig:subspace-confusion,external PDF

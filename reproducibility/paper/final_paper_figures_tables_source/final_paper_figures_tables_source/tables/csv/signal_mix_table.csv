@@ -1,0 +1,7 @@
+﻿dataset,ntest,raw_percent,low_pass_percent,high_pass_percent
+Amazon-Computers,13252,15.32,69.76,14.92
+Amazon-Photo,7250,13.35,71.97,14.68
+Chameleon,456,0.31,61.32,38.37
+Cornell,37,28.12,34.99,36.89
+Texas,38,29.47,30.59,39.94
+Wisconsin,51,34.59,32.7,32.71

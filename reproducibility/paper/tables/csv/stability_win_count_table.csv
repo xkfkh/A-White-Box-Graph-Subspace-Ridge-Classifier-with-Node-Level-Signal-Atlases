@@ -1,0 +1,7 @@
+﻿dataset,wgsrc_wins,mean_delta_pp,median_delta_pp,range_min_pp,range_max_pp
+Amazon-Computers,7/10,1.87,1.28,-1.01,7.55
+Amazon-Photo,6/10,0.39,0.61,-3.89,3.64
+Chameleon,7/10,0.92,0.55,-0.66,3.51
+Cornell,7/10,2.97,4.05,-10.81,18.92
+Texas,7/10,1.99,1.67,-10.24,8.53
+Wisconsin,5/10,0.98,1.96,-9.8,9.8

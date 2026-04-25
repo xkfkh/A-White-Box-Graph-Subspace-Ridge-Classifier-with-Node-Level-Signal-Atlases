@@ -1,0 +1,72 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+    node distance=1.2cm and 1.35cm,
+    box/.style={
+        rectangle,
+        rounded corners,
+        draw=black!70,
+        fill=gray!6,
+        thick,
+        align=center,
+        minimum width=3.0cm,
+        minimum height=0.9cm
+    },
+    keybox/.style={
+        rectangle,
+        rounded corners,
+        draw=blue!70!black,
+        fill=blue!6,
+        thick,
+        align=center,
+        minimum width=3.35cm,
+        minimum height=0.95cm
+    },
+    designbox/.style={
+        rectangle,
+        rounded corners,
+        draw=orange!85!black,
+        fill=orange!8,
+        thick,
+        align=center,
+        minimum width=3.35cm,
+        minimum height=0.95cm
+    },
+    arrow/.style={-{Latex[length=2.2mm]}, thick}
+]
+
+% top row
+\node[box] (data) {Graph dataset\\$(A,X,Y)$};
+\node[keybox, right=of data] (full) {Run full\\\textsc{WG-SRC} scaffold};
+\node[keybox, right=of full] (atlas) {Compute operational\\fingerprint $\mathbf{m}(D)$};
+
+% bottom row
+\node[designbox, below=of atlas] (diagnosis) {Dataset diagnosis\\from $\mathbf{m}(D)$};
+\node[designbox, left=of diagnosis] (design) {Mechanism hypotheses\\and diagnostic guidance};
+\node[box, left=of design] (validate) {Follow-up model analysis\\or targeted modification};
+\node[box, below=of validate] (out) {Diagnostic evidence\\for model behavior};
+
+% arrows
+\draw[arrow] (data) -- (full);
+\draw[arrow] (full) -- (atlas);
+\draw[arrow] (atlas) -- (diagnosis);
+\draw[arrow] (diagnosis) -- (design);
+\draw[arrow] (design) -- (validate);
+\draw[arrow] (validate) -- (out);
+
+% small annotations
+\node[align=center, font=\scriptsize, below=0.18cm of full] {generalist probe};
+\node[align=left, font=\scriptsize, below right=0.08cm and 0.18cm of atlas]
+{mechanism measurement};
+
+\end{tikzpicture}
+\caption{
+Mechanism atlas as a dataset diagnostic probe. \SRC{} first performs prediction
+with the full scaffold and then exposes an operational fingerprint
+$\mathbf{m}(D)$. The atlas is not claimed to automate model design; rather, it
+produces mechanism hypotheses and post-evaluation diagnostic guidance whose support is
+evaluated through aligned interventions, error shifts, and PCA--Ridge decision phase portraits on the same
+measured dataset.
+}
+\label{fig:atlas-guided-diagnosis}
+\end{figure}

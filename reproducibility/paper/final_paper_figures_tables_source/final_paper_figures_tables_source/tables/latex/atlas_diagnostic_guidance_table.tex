@@ -1,0 +1,468 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{
+Paired effect summary against the strongest aligned baseline. Gains are
+reported in percentage points. The effect size $d_z$ is paired Cohen's $d$,
+computed as the mean paired gain divided by the standard deviation of the
+split-level paired gains. The final row treats the six dataset-level mean
+gains as the paired units.
+}
+\label{tab:paired-effect}
+\begin{tabular}{lrrr}
+\toprule
+Dataset & Mean gain & 95\% CI & $d_z$ \\
+\midrule
+Amazon-Computers & $+1.87$ & $[-0.07,\,+3.81]$ & $0.69$ \\
+Amazon-Photo     & $+0.39$ & $[-1.20,\,+1.98]$ & $0.18$ \\
+Chameleon        & $+0.92$ & $[-0.14,\,+1.98]$ & $0.62$ \\
+Cornell          & $+2.97$ & $[-4.05,\,+10.00]$ & $0.30$ \\
+Texas            & $+1.99$ & $[-2.35,\,+6.33]$ & $0.33$ \\
+Wisconsin        & $+0.98$ & $[-3.84,\,+5.81]$ & $0.15$ \\
+\midrule
+Dataset-level aggregate & $+1.52$ & $[+0.54,\,+2.50]$ & $1.62$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All six dataset-level mean gains are positive. To avoid treating the 60
+split-level differences as fully independent observations, our primary
+significance statement uses the six dataset-level mean gains as the paired
+units. A two-sided one-sample $t$-test over the six dataset-level gains gives
+$p=0.0105$, a two-sided Wilcoxon signed-rank test gives $p=0.0313$, and a
+two-sided sign test for all six gains being positive gives $p=0.0313$. Thus,
+the aggregate paired evidence supports a statistically significant improvement
+over the strongest aligned baseline. 
+
+
+
+\section{Mechanistic Interventions and White-box Mechanism Checks}
+\label{sec:ablation-specialization}
+
+A common weakness of ablation studies is that they are run under a different
+split or seed protocol from the main experiment. To avoid this issue, we rerun
+all ablations using the same split and seed protocol as the final SRC-v16c
+main experiment. Each ablation is evaluated over ten matched repeats, uses the
+same train/validation/test policy as the corresponding full-model run, selects
+its internal hyperparameters by validation only, and evaluates the test set
+only after validation selection. Thus, the ablation study is aligned with the
+main experimental protocol rather than being a separate two-run diagnostic.
+
+Because \SRC{} is designed as a diagnostic scaffold, the full model should not
+be interpreted as the single best specialist for every dataset. Instead, the
+full scaffold exposes which signal families and decision mechanisms are active.
+The simplified variants in Table~\ref{tab:ablation-specialization} are
+therefore not merely ablations; they are controlled mechanistic interventions
+that test whether simple structural changes agree with the dataset mechanisms
+measured by the atlas.
+
+\input{tables/ablation_table.tex}
+
+The aligned interventions show that SRC-v16c should be interpreted as a
+general white-box scaffold rather than as a single dataset-specific specialist.
+Some simplified variants can outperform or closely match the full scaffold on
+individual datasets: removing high-pass blocks improves the two Amazon graphs,
+ridge-oriented variants are strong on Cornell and Texas, and raw-only is
+strongest on Wisconsin. However, these specialized gains do not transfer
+uniformly across datasets. Raw-only collapses on Chameleon, PCA-only is weak
+across the board, and no single specialized variant remains reliable on all
+six datasets.
+
+The bottom rows of Table~\ref{tab:ablation-specialization} summarize this
+generalist-versus-specialist distinction. The full SRC-v16c scaffold has the
+best average rank among the listed variants, the highest worst-case accuracy,
+and is the only variant that appears in the top three on every dataset. These
+cross-dataset statistics are the key reason we keep the full scaffold as the
+main method. In addition, the choice is not based on accuracy alone. Although
+the Ridge-only variant attains a slightly higher mean accuracy, it is not an
+adequate primary model for the present paper's purpose because it removes the
+class-subspace branch that is necessary for the downstream atlas analyses,
+especially class-subspace complexity, PCA--Ridge complementarity, and the
+geometry-versus-boundary interpretation developed in the later sections.
+Dataset-specific variants are useful diagnostics, and sometimes useful
+specialists, but the full model is the most stable and analytically complete
+white-box base model across the benchmark suite.
+
+This is the intended role of the intervention study. Since the model is
+white-box, removing or isolating a component is not merely a damage test; it is
+a mechanism check. Amazon graphs are low-pass dominated, so high-pass blocks
+can be removed for a specialized improvement. Chameleon requires the combined
+multi-hop, high-pass, PCA, and ridge structure, so the full model is strongest
+there. WebKB graphs are more boundary- or raw-feature dominated, so simplified
+specialists can improve particular datasets. These results preview the atlas
+analysis below: once the dataset structure is measured, the same measurements
+can explain which algorithmic simplifications or emphases are worth trying.
+
+\section{From Node-Level Atlases to Dataset Fingerprints}
+\label{sec:mechanistic-atlas}
+
+We call the aggregated atlas of a dataset an \emph{operational dataset
+fingerprint}. It is operational because it is computed by a fixed, named
+graph-signal dictionary and by fixed white-box decision modules; it is a
+dataset fingerprint because applying the same measurement procedure to every
+dataset yields comparable signal compositions, decision geometries, class
+complexities, and error shifts. The fingerprint is not a causal claim about
+the true data-generating process. It is a reproducible measurement of how a
+white-box graph classifier uses the dataset.
+
+For dataset $D$, let $\Eval_D$ denote the evaluation node set used for atlas
+reporting; in the retrospective analysis below, this is the test-node set.
+Let $\mathcal{C}_{\Train}$ denote the set of classes present in the training
+split, and write $C_{\Train}=|\mathcal{C}_{\Train}|$. We define the
+dataset-level signal means by
+\begin{equation}
+R_D
+=
+\frac{1}{|\Eval_D|}
+\sum_{i\in\Eval_D}\Rraw(i),
+\qquad
+L_D
+=
+\frac{1}{|\Eval_D|}
+\sum_{i\in\Eval_D}\Rlow(i),
+\qquad
+H_D
+=
+\frac{1}{|\Eval_D|}
+\sum_{i\in\Eval_D}\Rhigh(i),
+\label{eq:dataset-signal-means}
+\end{equation}
+the mean class-subspace complexity by
+\begin{equation}
+C_D
+=
+\frac{1}{C_{\Train}}
+\sum_{c\in\mathcal{C}_{\Train}} r_c,
+\label{eq:dataset-complexity}
+\end{equation}
+and the PCA--Ridge decision fractions by
+\begin{equation}
+Q^{\mathrm{ridge}}_D
+=
+\frac{1}{|\Eval_D|}
+\sum_{i\in\Eval_D}
+\mathbf{1}\!\left\{
+\hat y_i^{\mathrm{ridge}}=y_i,\;
+\hat y_i^{\mathrm{pca}}\neq y_i
+\right\},
+\label{eq:ridge-only-fraction}
+\end{equation}
+\begin{equation}
+Q^{\mathrm{hard}}_D
+=
+\frac{1}{|\Eval_D|}
+\sum_{i\in\Eval_D}
+\mathbf{1}\!\left\{
+\hat y_i^{\mathrm{ridge}}\neq y_i,\;
+\hat y_i^{\mathrm{pca}}\neq y_i
+\right\}.
+\label{eq:hard-fraction}
+\end{equation}
+Define the correct and wrong subsets of the evaluation nodes by
+\begin{equation}
+\Eval_D^{\mathrm{correct}}
+=
+\{\,i\in\Eval_D:\hat y_i=y_i\,\},
+\qquad
+\Eval_D^{\mathrm{wrong}}
+=
+\{\,i\in\Eval_D:\hat y_i\neq y_i\,\}.
+\label{eq:correct-wrong-sets}
+\end{equation}
+For the correctness-dependent high-pass shift, let
+\begin{equation}
+H_D^{\mathrm{correct}}
+=
+\frac{1}{|\Eval_D^{\mathrm{correct}}|}
+\sum_{i\in\Eval_D^{\mathrm{correct}}}\Rhigh(i),
+\qquad
+H_D^{\mathrm{wrong}}
+=
+\frac{1}{|\Eval_D^{\mathrm{wrong}}|}
+\sum_{i\in\Eval_D^{\mathrm{wrong}}}\Rhigh(i),
+\label{eq:correct-wrong-high}
+\end{equation}
+and define
+\begin{equation}
+\Delta H_D
+=
+H_D^{\mathrm{wrong}}
+-
+H_D^{\mathrm{correct}}.
+\label{eq:highpass-shift}
+\end{equation}
+We then summarize the operational atlas of dataset $D$ by
+\begin{equation}
+\mathbf{m}(D)
+=
+\left[
+R_D,\,
+L_D,\,
+H_D,\,
+C_D,\,
+Q^{\mathrm{ridge}}_D,\,
+Q^{\mathrm{hard}}_D,\,
+\Delta H_D
+\right].
+\label{eq:atlas-fingerprint}
+\end{equation}
+
+In the present paper, these quantities are reported on test nodes in order to
+characterize how the fixed white-box probe behaves on the dataset after
+standard supervised evaluation. This post-evaluation setting is intentional:
+the goal here is to measure and diagnose dataset behavior under a fixed probe,
+not to claim blind pre-test model selection, prospective model selection, or
+dataset-independent design rules. Accordingly, the resulting fingerprint is
+meant to provide post-evaluation diagnostic guidance only for later model
+analysis and dataset-specific modification on the same measured dataset. If
+related diagnostic procedures are later used prospectively, then any
+correctness-dependent quantities should be computed only on training or
+validation nodes, never on test nodes.
+
+\subsection{Graph-signal fingerprints}
+
+\input{tables/signal_mix_table.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{fig_signal_simplex.pdf}
+    \caption{
+    Graph-signal simplex. Each dataset is positioned in a ternary coordinate system
+    using its family-size-adjusted node-level raw, low-pass, and high-pass signal shares.
+    Marker color encodes high-pass reliance, while callouts report the high-pass and low-pass
+    percentages. Amazon graphs remain low-pass dominated after adjustment, whereas
+    Chameleon and the WebKB datasets move toward a more mixed raw/high-pass regime,
+    showing that the datasets differ not only in accuracy but also in the graph-signal
+    mechanisms used by \SRC{}.
+    }
+    \label{fig:signal-simplex}
+\end{figure}
+\FloatBarrier
+
+Table~\ref{tab:signal-mix} and Figure~\ref{fig:signal-simplex} report family-size-adjusted
+signal-family shares, so the reported composition is not mechanically driven by
+the unequal 1:5:3 block counts of the raw/low-pass/high-pass partition.
+\dataset{Amazon-Computers} and \dataset{Amazon-Photo} remain low-pass dominated,
+but at a corrected level of roughly $70$--$72\%$ rather than the unadjusted
+$84$--$85\%$. \dataset{Chameleon} shifts toward a mixed low-pass/high-pass
+profile, while \dataset{Cornell}, \dataset{Texas}, and \dataset{Wisconsin}
+move into a substantially more raw- and high-pass-balanced regime. Thus, the
+classical homophily/heterophily dichotomy can be refined into a measurable
+signal composition: a graph may still be low-pass dominated, yet retain a
+nontrivial raw or high-pass component after correcting for family cardinality.
+
+\subsection{Dense node-level signal phase portraits}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.98\linewidth]{fig_node_signal_phase_portraits.pdf}
+    \caption{Dense node-level signal phase portraits. Each test node is positioned by family-size-adjusted low-pass share (x-axis) and family-size-adjusted high-pass share (y-axis). Blue semi-transparent points show all test nodes and orange semi-transparent points show errors. The plots show where mistakes occur inside the signal space rather than only how many errors occur.}
+    \label{fig:signal-phase}
+\end{figure}
+\FloatBarrier
+
+Figure~\ref{fig:signal-phase} uses all test nodes rather than dataset averages.
+The portrait is deliberately not a feature-attribution bar plot: it is a phase
+portrait of the family-size-adjusted graph-signal state induced by the explicit dictionary in
+Eq.~\eqref{eq:dictionary}. Amazon errors are concentrated away from the
+dominant low-pass core. Chameleon occupies a visibly broader mixed
+low-pass/high-pass region, consistent with the need to preserve node-neighborhood differences. This is
+the key advantage of a named signal dictionary: the space in which a model
+succeeds or fails is directly plottable.
+
+\subsection{PCA geometry versus ridge boundary}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.98\linewidth]{fig_decision_margin_phase.pdf}
+    \caption{PCA--Ridge decision phase map. Each node is plotted by PCA margin and ridge margin. Blue points are correct predictions and orange points are errors. The axes separate geometry-driven, boundary-driven, easy, and hard cases.}
+    \label{fig:decision-phase}
+\end{figure}
+\FloatBarrier
+
+The PCA residual and ridge boundary are not redundant. Their node-level margins
+form a two-dimensional decision phase space (Figure~\ref{fig:decision-phase}).
+Nodes in the positive-positive region are easy for both modules;
+negative-negative nodes are hard for both; off-axis regions reveal
+geometry-only and boundary-only cases. On \dataset{Texas} and
+\dataset{Wisconsin}, ridge margins correct a nontrivial fraction of nodes that
+the PCA residual alone misses, explaining why the final classifier often
+behaves boundary-dominantly on WebKB graphs.
+
+\subsection{Class-subspace geometry complexity}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\linewidth]{fig_class_geometry_complexity.pdf}
+    \caption{Class-subspace geometry complexity. Each point is one class, positioned by its selected PCA dimension $r_c$ and colored by retained variance. Chameleon requires much larger class subspaces than Amazon and WebKB, indicating that its classes occupy more complex regions of the selected graph-signal space.}
+    \label{fig:class-geometry}
+\end{figure}
+\FloatBarrier
+
+Figure~\ref{fig:class-geometry} gives a class-level view of the PCA component.
+Amazon and WebKB classes require relatively small selected dimensions, while
+Chameleon approaches the dimension cap for several classes. This supports the
+interpretation that Chameleon is not merely a graph-filtering problem: its
+class geometry in the selected signal space is intrinsically more complex,
+making the ridge boundary an important complement to PCA residuals.
+
+\subsection{Correct-vs-wrong signal shifts}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.84\linewidth]{fig_error_signal_shift.pdf}
+    \caption{Error signal shift. The lollipop value is the family-size-adjusted high-pass share of wrong nodes minus the family-size-adjusted high-pass share of correct nodes. Positive values mean errors have more high-pass mass; negative values mean errors lose high-pass mass relative to correct nodes.}
+    \label{fig:error-shift}
+\end{figure}
+\FloatBarrier
+
+Figure~\ref{fig:error-shift} shows that errors are not uniformly distributed
+in signal space. On Amazon graphs, errors carry more high-pass mass than
+correct nodes, consistent with errors being atypical relative to the dominant
+low-pass mechanism. On Chameleon, the shift goes in the opposite direction:
+correct nodes rely more on high-pass differences, while errors are relatively
+more low-pass. This directly supports the design choice of including
+$X-\Prw X$ and $\Prw X-\Prw^2X$ in the dictionary.
+
+\section{From Dataset Fingerprints to Diagnostic Guidance}
+
+\label{sec:atlas-diagnostic-probe}
+
+The mechanistic atlas converts a dataset from a single accuracy number into a
+white-box diagnostic object. Instead of asking only which model wins on a
+dataset, WG-SRC asks which graph-signal families and decision mechanisms are
+associated with success or failure under a fixed white-box probe. This changes
+the role of evaluation: the dataset is no longer treated only as a black-box
+benchmark, but also as an object whose raw-feature reliance, propagation
+reliance, high-pass sensitivity, class geometry, and boundary dependence can be
+measured.
+
+The claim supported in this section is deliberately narrower than automatic
+algorithm design but stronger than mechanism interpretation alone. We do not
+claim that the atlas, by itself, discovers the globally best new model on a
+dataset or replaces a full redesign search. Rather, \SRC{} is a dual-purpose
+white-box model: it performs prediction and simultaneously produces the
+fingerprint $\mathbf{m}(D)$ in Eq.~\eqref{eq:atlas-fingerprint}. That
+fingerprint yields mechanism hypotheses---for example, that high-pass blocks
+are acting as noise, that raw features must be preserved, or that a
+ridge-style boundary is correcting PCA failures. The role of the aligned interventions is to test whether these hypotheses are
+supported in the expected direction. In this sense, the atlas is not a blind
+redesign oracle, not a prospective model selector, and not a
+dataset-independent design rule. Rather, after a standard evaluation of the
+fitted white-box scaffold, it provides post-evaluation diagnostic guidance for
+later model analysis and dataset-specific modification on that same measured
+dataset.
+
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+    node distance=1.2cm and 1.35cm,
+    box/.style={
+        rectangle,
+        rounded corners,
+        draw=black!70,
+        fill=gray!6,
+        thick,
+        align=center,
+        minimum width=3.0cm,
+        minimum height=0.9cm
+    },
+    keybox/.style={
+        rectangle,
+        rounded corners,
+        draw=blue!70!black,
+        fill=blue!6,
+        thick,
+        align=center,
+        minimum width=3.35cm,
+        minimum height=0.95cm
+    },
+    designbox/.style={
+        rectangle,
+        rounded corners,
+        draw=orange!85!black,
+        fill=orange!8,
+        thick,
+        align=center,
+        minimum width=3.35cm,
+        minimum height=0.95cm
+    },
+    arrow/.style={-{Latex[length=2.2mm]}, thick}
+]
+
+% top row
+\node[box] (data) {Graph dataset\\$(A,X,Y)$};
+\node[keybox, right=of data] (full) {Run full\\\textsc{WG-SRC} scaffold};
+\node[keybox, right=of full] (atlas) {Compute operational\\fingerprint $\mathbf{m}(D)$};
+
+% bottom row
+\node[designbox, below=of atlas] (diagnosis) {Dataset diagnosis\\from $\mathbf{m}(D)$};
+\node[designbox, left=of diagnosis] (design) {Mechanism hypotheses\\and diagnostic guidance};
+\node[box, left=of design] (validate) {Follow-up model analysis\\or targeted modification};
+\node[box, below=of validate] (out) {Diagnostic evidence\\for model behavior};
+
+% arrows
+\draw[arrow] (data) -- (full);
+\draw[arrow] (full) -- (atlas);
+\draw[arrow] (atlas) -- (diagnosis);
+\draw[arrow] (diagnosis) -- (design);
+\draw[arrow] (design) -- (validate);
+\draw[arrow] (validate) -- (out);
+
+% small annotations
+\node[align=center, font=\scriptsize, below=0.18cm of full] {generalist probe};
+\node[align=left, font=\scriptsize, below right=0.08cm and 0.18cm of atlas]
+{mechanism measurement};
+
+\end{tikzpicture}
+\caption{
+Mechanism atlas as a dataset diagnostic probe. \SRC{} first performs prediction
+with the full scaffold and then exposes an operational fingerprint
+$\mathbf{m}(D)$. The atlas is not claimed to automate model design; rather, it
+produces mechanism hypotheses and post-evaluation diagnostic guidance whose support is
+evaluated through aligned interventions, error shifts, and PCA--Ridge decision phase portraits on the same
+measured dataset.
+}
+\label{fig:atlas-guided-diagnosis}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{
+From dataset fingerprint to post-evaluation same-dataset diagnostic guidance.
+The atlas signatures generate mechanism hypotheses and diagnostic guidance for
+later model analysis and dataset-specific modification on the measured dataset. The table is
+a diagnostic-consistency summary, not a test-set-tuned model search: it
+records whether the suggested mechanism direction agrees with aligned
+interventions.
+}
+\label{tab:atlas-diagnostic-consistency}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{0.25\linewidth}p{0.27\linewidth}p{0.42\linewidth}}
+\toprule
+Atlas signature & Dataset diagnosis & Diagnostic guidance \\
+\midrule
+High $L_D$, low $H_D$, and positive $\Delta H_D$
+& High-pass components may act as noise
+& Remove, downweight, gate, or regularize high-pass blocks \\
+Near-zero $R_D$ and high $C_D$
+& Raw features are insufficient; class geometry is complex
+& Preserve graph-derived signals and improve class-specific subspace modeling \\
+High $H_D$ and negative $\Delta H_D$
+& Correct nodes rely on high-pass structure
+& Preserve or adaptively gate high-pass differences rather than removing them globally \\
+High $Q^{\mathrm{ridge}}_D$
+& Boundary decisions correct PCA failures
+& Strengthen the discriminative head or improve PCA--Ridge boundary fusion \\
+High $Q^{\mathrm{hard}}_D$
+& Both geometry and boundary fail on many nodes
+& Investigate new signal blocks, hard-node treatment, uncertainty handling, or graph rewiring \\
+High $R_D$ and low-to-moderate $C_D$
+& Raw features carry strong class information
+& Use raw-preserving skip design, weak propagation, or propagation gating \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

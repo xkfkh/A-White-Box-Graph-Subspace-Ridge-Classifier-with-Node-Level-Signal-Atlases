@@ -1,0 +1,43 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{
+Aligned mechanistic intervention summary. All variants are run with the same
+ten split/seed protocol as the final SRC-v16c experiment. Entries are mean
+test accuracy in percent. The bottom rows summarize cross-dataset
+generalization. Rank is computed within each dataset among the listed variants;
+lower is better. The full model is not always the best dataset-specific
+specialist, but it has the best average rank, the best worst-case accuracy,
+and is the only variant that remains in the top three on all six datasets. The
+simplified variants are used as diagnostic interventions, not as a redefinition
+of the main benchmark model.
+}
+\label{tab:ablation-specialization}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrrl}
+\toprule
+Dataset
+& \textbf{Full}
+& Raw
+& No high-pass
+& No $P^3X$
+& No sym
+& PCA only
+& Ridge only
+& Best diagnostic variant \\
+\midrule
+Amazon-Computers & \textbf{78.71} & 63.46 & 79.73 & 76.32 & 73.54 & 76.83 & 78.58 & No high-pass (79.73) \\
+Amazon-Photo & \textbf{88.76} & 76.88 & 90.27 & 87.16 & 84.78 & 87.15 & 89.12 & No high-pass (90.27) \\
+Chameleon & \textbf{72.48} & 44.71 & 72.02 & 71.67 & 72.35 & 70.61 & 71.62 & Full / near-full (72.48) \\
+Cornell & \textbf{75.41} & 77.30 & 71.08 & 75.14 & 74.32 & 66.76 & 77.57 & Ridge only (77.57) \\
+Texas & \textbf{86.32} & 82.89 & 83.42 & 85.26 & 85.79 & 77.11 & 86.58 & Ridge only (86.58) \\
+Wisconsin & \textbf{84.31} & 88.63 & 79.22 & 85.69 & 83.73 & 78.24 & 83.92 & Raw only (88.63) \\
+\midrule
+Mean accuracy & \textbf{81.00} & 72.31 & 79.29 & 80.21 & 79.09 & 76.12 & 81.23 & --- \\
+Worst-case accuracy & \textbf{72.48} & 44.71 & 71.08 & 71.67 & 72.35 & 66.76 & 71.62 & --- \\
+Average rank $\downarrow$ & \textbf{2.33} & 5.00 & 3.67 & 3.83 & 4.50 & 6.00 & 2.67 & --- \\
+Top-3 count & \textbf{6/6} & 2/6 & 3/6 & 1/6 & 2/6 & 0/6 & 4/6 & --- \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

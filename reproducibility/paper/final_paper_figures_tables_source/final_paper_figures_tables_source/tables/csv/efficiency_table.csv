@@ -1,0 +1,7 @@
+﻿dataset,best_baseline,baseline_time_sec,wgsrc_time_sec,ratio,wgsrc_acc_percent
+Amazon-Computers,GraphSAGE,208.5,292.9,1.4,78.71
+Amazon-Photo,GraphSAGE,81.3,136.4,1.7,88.76
+Chameleon,LINKX,3.6,62.1,17.5,72.48
+Cornell,GraphSAGE,0.8,4.5,5.7,75.41
+Texas,GraphSAGE,0.8,4.1,5.2,86.32
+Wisconsin,GraphSAGE,0.9,6.0,6.8,84.31

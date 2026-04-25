@@ -1,0 +1,7 @@
+﻿atlas_signature,dataset_diagnosis,diagnostic_guidance
+"High L_D, low H_D, and positive ΔH_D",High-pass components may act as noise,"Remove, downweight, gate, or regularize high-pass blocks"
+Near-zero R_D and high C_D,Raw features are insufficient; class geometry is complex,Preserve graph-derived signals and improve class-specific subspace modeling
+High H_D and negative ΔH_D,Correct nodes rely on high-pass structure,Preserve or adaptively gate high-pass differences rather than removing them globally
+High Q^ridge_D,Boundary decisions correct PCA failures,Strengthen the discriminative head or improve PCA–Ridge boundary fusion
+High Q^hard_D,Both geometry and boundary fail on many nodes,"Investigate new signal blocks, hard-node treatment, uncertainty handling, or graph rewiring"
+High R_D and low-to-moderate C_D,Raw features carry strong class information,"Use raw-preserving skip design, weak propagation, or propagation gating"

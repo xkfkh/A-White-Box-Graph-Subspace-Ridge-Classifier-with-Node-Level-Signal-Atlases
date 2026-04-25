@@ -1,0 +1,8 @@
+﻿dataset,mean_gain_pp,ci95_low_pp,ci95_high_pp,paired_dz
+Amazon-Computers,1.87,-0.07,3.81,0.69
+Amazon-Photo,0.39,-1.2,1.98,0.18
+Chameleon,0.92,-0.14,1.98,0.62
+Cornell,2.97,-4.05,10.0,0.3
+Texas,1.99,-2.35,6.33,0.33
+Wisconsin,0.98,-3.84,5.81,0.15
+Dataset-level aggregate,1.52,0.54,2.5,1.62

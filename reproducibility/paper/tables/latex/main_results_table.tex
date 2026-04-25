@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Main comparison on the six evaluated datasets. Baseline numbers come from the aligned CPU rerun of the strongest reproduced baseline; \SRC{} numbers come from the final \SRC{} repeat table. We report mean test accuracy and sample standard deviation over ten aligned repeats.}
+\label{tab:main-results}
+\begin{tabular}{llccc}
+\toprule
+Dataset & Strongest baseline & Baseline ($n=10$) & \SRC{} ($n=10$) & Gain \\
+\midrule
+Amazon-Computers & GraphSAGE & 76.84 $\pm$ 2.28 & 78.71 $\pm$ 1.15 & +1.87 \\
+Amazon-Photo & GraphSAGE & 88.37 $\pm$ 1.86 & 88.76 $\pm$ 1.35 & +0.39 \\
+Chameleon & LINKX & 71.56 $\pm$ 1.49 & 72.48 $\pm$ 1.85 & +0.92 \\
+Cornell & GraphSAGE & 72.43 $\pm$ 6.47 & 75.41 $\pm$ 7.26 & +2.97 \\
+Texas & GraphSAGE & 84.32 $\pm$ 4.73 & 86.32 $\pm$ 4.08 & +1.99 \\
+Wisconsin & GraphSAGE & 83.33 $\pm$ 5.25 & 84.31 $\pm$ 4.24 & +0.98 \\
+\midrule
+\textbf{Average} & -- & \textbf{79.48} & \textbf{81.00} & \textbf{+1.52} \\
+\bottomrule
+\end{tabular}
+\end{table}

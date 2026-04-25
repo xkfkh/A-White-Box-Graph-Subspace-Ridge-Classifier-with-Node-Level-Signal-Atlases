@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Paired random-split stability. For split $s$, $\Delta_s = Acc_{\mathrm{SRC},s}-Acc_{\mathrm{base},s}$ in percentage points, paired by dataset and repeat index. Baseline values are taken from the aligned CPU baseline rerun.}
+\label{tab:stability-win}
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & \SRC{} wins & Mean $\Delta$ & Median $\Delta$ & Range $\Delta$ \\
+\midrule
+Amazon-Computers & 7/10 & +1.87 & +1.28 & [-1.01, +7.55] \\
+Amazon-Photo & 6/10 & +0.39 & +0.61 & [-3.89, +3.64] \\
+Chameleon & 7/10 & +0.92 & +0.55 & [-0.66, +3.51] \\
+Cornell & 7/10 & +2.97 & +4.05 & [-10.81, +18.92] \\
+Texas & 7/10 & +1.99 & +1.67 & [-10.24, +8.53] \\
+Wisconsin & 5/10 & +0.98 & +1.96 & [-9.80, +9.80] \\
+\bottomrule
+\end{tabular}
+\end{table}

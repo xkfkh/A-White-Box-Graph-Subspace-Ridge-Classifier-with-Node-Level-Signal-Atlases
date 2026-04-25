@@ -1,0 +1,11 @@
+﻿dataset_or_summary,full,raw,no_high_pass,no_p3x,no_sym,pca_only,ridge_only,best_diagnostic_variant
+Amazon-Computers,78.71,63.46,79.73,76.32,73.54,76.83,78.58,No high-pass (79.73)
+Amazon-Photo,88.76,76.88,90.27,87.16,84.78,87.15,89.12,No high-pass (90.27)
+Chameleon,72.48,44.71,72.02,71.67,72.35,70.61,71.62,Full / near-full (72.48)
+Cornell,75.41,77.3,71.08,75.14,74.32,66.76,77.57,Ridge only (77.57)
+Texas,86.32,82.89,83.42,85.26,85.79,77.11,86.58,Ridge only (86.58)
+Wisconsin,84.31,88.63,79.22,85.69,83.73,78.24,83.92,Raw only (88.63)
+Mean accuracy,81.0,72.31,79.29,80.21,79.09,76.12,81.23,-
+Worst-case accuracy,72.48,44.71,71.08,71.67,72.35,66.76,71.62,-
+Average rank ↓,2.33,5.0,3.67,3.83,4.5,6.0,2.67,-
+Top-3 count,6/6,2/6,3/6,1/6,2/6,0/6,4/6,-

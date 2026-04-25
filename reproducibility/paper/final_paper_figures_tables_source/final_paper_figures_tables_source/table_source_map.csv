@@ -1,0 +1,8 @@
+﻿paper_item,latex_source_file,csv_source_file,description,latex_label
+Table 1,tables/latex/main_results_table.tex,tables/csv/main_results_table.csv,Main comparison on six datasets,tab:main-results
+Table 2,tables/latex/stability_win_count_table.tex,tables/csv/stability_win_count_table.csv,Paired random-split stability,tab:stability-win
+Table 3,tables/latex/paired_effect_table.tex,tables/csv/paired_effect_table.csv,Paired effect summary,tab:paired-effect
+Table 4,tables/latex/ablation_table.tex,tables/csv/ablation_table.csv,Aligned mechanistic intervention summary,tab:ablation-specialization
+Table 5,tables/latex/signal_mix_table.tex,tables/csv/signal_mix_table.csv,Family-size-adjusted node-level graph signal mixture,tab:signal-mix
+Table 6,tables/latex/atlas_diagnostic_guidance_table.tex,tables/csv/atlas_diagnostic_guidance_table.csv,Dataset fingerprint to diagnostic guidance,tab:atlas-diagnostic-consistency
+Table 7,tables/latex/efficiency_table.tex,tables/csv/efficiency_table.csv,Appendix computational profile,tab:efficiency
