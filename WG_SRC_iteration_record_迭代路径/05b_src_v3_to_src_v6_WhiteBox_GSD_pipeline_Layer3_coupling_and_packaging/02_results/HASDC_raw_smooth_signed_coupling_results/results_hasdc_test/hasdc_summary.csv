@@ -1,0 +1,4 @@
+﻿dataset,variant,n,val_mean,val_std,test_mean,test_std
+cornell,hasdc_gated,1,0.6101694703102112,,0.4864864945411682,
+cornell,raw_plain_residual,1,0.7627118825912476,,0.7567567825317383,
+cornell,smooth_plain_residual,1,0.6440678238868713,,0.5945945978164673,

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ha-sdc"
+version = "0.1.0"
+description = "Homophily-Heterophily Adaptive Signed Dual-Subspace Crosslinking node classifier"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy>=1.21",
+  "scipy>=1.8"
+]
+authors = [
+  {name = "HA-SDC Author"}
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ha_sdc*"]

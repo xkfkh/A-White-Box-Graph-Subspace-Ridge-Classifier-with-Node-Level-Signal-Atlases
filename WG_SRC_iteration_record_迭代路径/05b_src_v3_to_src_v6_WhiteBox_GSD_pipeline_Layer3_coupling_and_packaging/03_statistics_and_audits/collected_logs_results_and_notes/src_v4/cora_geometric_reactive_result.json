@@ -1,0 +1,29 @@
+{
+  "protocol": {
+    "dataset": "cora",
+    "hyperparameter_selection": "No tuning on test set in this run. Fixed config used as-is.",
+    "train_labels_used_in_model_construction": true,
+    "validation_used_for_reporting_only": true,
+    "test_used_for_reporting_only": true,
+    "config": {
+      "lam": 10.0,
+      "sub_dim": 12,
+      "eta_react": 0.1,
+      "max_activation_scale": null
+    }
+  },
+  "result": {
+    "dataset": "cora",
+    "pipeline": "WhiteBoxPipeline-v3",
+    "config": {
+      "lam": 10.0,
+      "sub_dim": 12,
+      "eta_react": 0.1,
+      "max_activation_scale": null
+    },
+    "train": 0.9785714149475098,
+    "val": 0.800000011920929,
+    "test": 0.8109999895095825,
+    "time": 25.07
+  }
+}

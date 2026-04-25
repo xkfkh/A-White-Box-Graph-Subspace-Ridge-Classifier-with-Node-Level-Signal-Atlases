@@ -1,0 +1,2 @@
+﻿dataset,repeat,split_id,seed,split_policy,method,variant,lam,sub_dim,eta,tau,smooth_backend,scoring_backend,num_nodes,num_features,num_classes,train_size,val_size,test_size,train_acc,val_acc,test_acc,cg_iters,cg_converged,time_sec,selection_rule
+cornell,0,0,0,geom_gcn_mask_split_id,WhiteBox-HASDC,freq_decomposed,0.5,12,0.0,5.0,src_v5_dense_layer1,freq_decomposed_plain_residual_raw,183,1703,5,87,59,37,1.0,0.7627118825912476,0.7567567825317383,0,True,0.204,val_acc_only
