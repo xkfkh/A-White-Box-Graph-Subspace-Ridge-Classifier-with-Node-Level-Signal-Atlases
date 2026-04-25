@@ -1,0 +1,86 @@
+﻿{
+  "version": "src_v17",
+  "dataset": "chameleon",
+  "data_base": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon",
+  "raw_root": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon\\geom_gcn\\raw",
+  "out_dir": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\scripts\\results_src_v17_oof_label_beam_audit_chameleon",
+  "num_splits": 10,
+  "beam_size": 5,
+  "val_mean": 0.7288065843621401,
+  "val_std": 0.022220952054336742,
+  "test_mean": 0.7239035087719298,
+  "test_std": 0.0181223166150255,
+  "elapsed": 6346.6010665893555,
+  "grids": {
+    "topk_grid": [
+      4000,
+      6000,
+      8000
+    ],
+    "dim_grid": [
+      48,
+      64,
+      96
+    ],
+    "energy_grid": [
+      0.9,
+      0.95,
+      0.99
+    ],
+    "alpha_sets": [
+      [
+        0.01,
+        0.1,
+        1.0
+      ],
+      [
+        0.05,
+        0.5,
+        5.0
+      ],
+      [
+        0.1,
+        1.0,
+        10.0
+      ]
+    ],
+    "w_grid": [
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7
+    ],
+    "temperature_grid": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "topk_r2_grid": [
+      6000,
+      8000,
+      10000
+    ],
+    "alpha_r2_sets": [
+      [
+        0.01,
+        0.1,
+        1.0
+      ],
+      [
+        0.05,
+        0.5,
+        5.0
+      ]
+    ],
+    "w2_grid": [
+      0.05,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "oof_folds": 4,
+    "oof_seed": 0
+  }
+}
+
