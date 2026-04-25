@@ -1,0 +1,11 @@
+﻿{
+  "src_v8": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\src_v8",
+  "algo_py": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\src_v8\\whcp_v4_rnr_lowrank_chameleon.py",
+  "results_csv": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\scripts\\results_v8_ch\\all_grid_results_partial.csv",
+  "data_root": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data",
+  "selected_configs": 20,
+  "repeats": [
+    0
+  ]
+}
+
