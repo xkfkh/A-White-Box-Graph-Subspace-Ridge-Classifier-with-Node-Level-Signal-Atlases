@@ -1,10 +1,18 @@
 # Operational Feature Fingerprints of Graph Datasets via a White-Box Signal-Subspace Probe
 
-**A white-box graph signal–subspace probe for revealing how graph datasets rely on raw features, low-pass propagation, high-pass differences, class-subspace geometry, and ridge-boundary decisions.**
+**A first-author-led white-box graph learning project that turns node prediction into dataset diagnosis.**
 
-This repository contains the implementation, experiments, and full research-iteration records for **WG-SRC**, the white-box signal–subspace probe used in the paper.
+This repository contains the implementation, experiment package, atlas/fingerprint analysis, and full research-iteration record for **WG-SRC**, a white-box signal–subspace probe developed for the paper:
 
-WG-SRC is not only a node classifier. It is also an intrinsic diagnostic instrument: every signal block and decision module is named, measurable, and auditable. Therefore, the fitted model produces not only predictions, but also **node-level mechanism atlases** and **dataset-level operational feature fingerprints**.
+**Operational Feature Fingerprints of Graph Datasets via a White-Box Signal-Subspace Probe**
+
+The project was led by **Xiong Yuchen** as first author, with **Yeap Swee Keong** and **Ban Zhen Hong** as corresponding supervisors.
+
+Rather than learning an opaque message-passing representation, WG-SRC constructs a named graph-signal dictionary, selects Fisher coordinates, fits class-wise PCA subspaces, solves closed-form multi-alpha Ridge classifiers, and fuses PCA/Ridge scores by validation.
+
+The key point is dual use: the same fitted white-box scaffold both predicts node labels and produces a node-level mechanism atlas. By aggregating this atlas, WG-SRC yields operational feature fingerprints of graph datasets, describing raw-feature reliance, low-pass propagation reliance, high-pass sensitivity, class-subspace complexity, and ridge-boundary dependence.
+
+> The main contribution is not only a competitive white-box node classifier, but a fitted predictive scaffold that converts graph datasets into measurable operational fingerprints.
 
 ---
 
