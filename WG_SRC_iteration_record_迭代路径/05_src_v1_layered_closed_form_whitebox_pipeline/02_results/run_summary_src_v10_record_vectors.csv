@@ -1,0 +1,4 @@
+﻿dataset,data_base,raw_root,src_v10_file,out_dir,dim_candidates,num_splits,val_mean,val_std,test_mean,test_std
+chameleon,D:\桌面\MSR实验复现与创新\planetoid\data\chameleon,D:\桌面\MSR实验复现与创新\planetoid\data\chameleon\geom_gcn\raw,D:\桌面\MSR实验复现与创新\experiments_g1\\wgsrc_development_workspace\src_v10\algo1_multihop_pca_safe_adaptive_branch_src_v10.py,D:\桌面\MSR实验复现与创新\experiments_g1\\wgsrc_development_workspace\scripts\results_src_v10_record_branch_vectors_chameleon,"[16, 24, 32, 48, 64]",10,0.6953360768175583,0.01774219966154862,0.6866228070175439,0.02001389368137344
+
+

@@ -1,0 +1,13 @@
+﻿{
+  "dataset": "chameleon",
+  "data_base": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon",
+  "raw_root": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon\\geom_gcn\\raw",
+  "out_dir": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\scripts\\results_src_v13_perclass_dim_coverage_audit_chameleon",
+  "dim_candidates": "[16, 24, 32, 48, 64]",
+  "num_splits": 10,
+  "val_mean": 0.6989026063100137,
+  "val_std": 0.016870197361109528,
+  "test_mean": 0.68859649122807,
+  "test_std": 0.023455687644071823
+}
+

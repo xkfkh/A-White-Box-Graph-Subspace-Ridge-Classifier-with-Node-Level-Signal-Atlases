@@ -1,0 +1,19 @@
+﻿{
+  "dataset": "chameleon",
+  "data_base": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon",
+  "raw_root": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon\\geom_gcn\\raw",
+  "out_dir": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\scripts\\results_src_v11_geometry_safe_branch_audit_chameleon",
+  "dim_candidates": [
+    16,
+    24,
+    32,
+    48,
+    64
+  ],
+  "num_splits": 10,
+  "val_mean": 0.6947873799725652,
+  "val_std": 0.01842684212118364,
+  "test_mean": 0.6855263157894738,
+  "test_std": 0.02226066235166582
+}
+

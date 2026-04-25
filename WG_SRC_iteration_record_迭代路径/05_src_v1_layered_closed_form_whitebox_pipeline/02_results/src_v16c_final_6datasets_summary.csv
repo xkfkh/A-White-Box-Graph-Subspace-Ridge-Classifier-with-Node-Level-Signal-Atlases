@@ -1,0 +1,9 @@
+﻿dataset,method,n,val_mean,val_std,test_mean,test_std,grid,source_path,val_mean_pct,val_std_pct,test_mean_pct,test_std_pct
+amazon-computers,src_v16c,10,0.8546666666666667,0.0123927497720877,0.7870962873528524,0.0115474381090688,fast,/root/autodl-tmp/srcv16c_submission_package/per_dataset/amazon-computers/E03_src_v16c_summary.csv,85.46666666666667,1.2392749772087701,78.70962873528524,1.15474381090688
+amazon-photo,src_v16c,10,0.9166666666666666,0.0220479275922049,0.8876,0.013532784870439,default,/root/autodl-tmp/srcv16c_submission_package/per_dataset/amazon-photo/results/E03_random_split_stability/E03_src_v16c_summary.csv,91.66666666666666,2.2047927592204903,88.75999999999999,1.3532784870438999
+cornell,src_v16c,10,0.8050847457627119,0.0322083453417835,0.754054054054054,0.0725770596797219,default,/root/autodl-tmp/srcv16c_submission_package/per_dataset/cornell/results/E03_random_split_stability/E03_src_v16c_summary.csv,80.5084745762712,3.2208345341783495,75.4054054054054,7.25770596797219
+squirrel,src_v16c,10,0.6095552884615385,0.0128394354044871,0.6088376560999039,0.0172602041912756,fast,/root/autodl-tmp/srcv16c_submission_package/per_dataset/squirrel/E03_src_v16c_summary.csv,60.955528846153854,1.28394354044871,60.88376560999039,1.72602041912756
+texas,src_v16c,10,0.8775862068965518,0.0249851323210163,0.8631578947368421,0.0407682457495517,default,/root/autodl-tmp/srcv16c_submission_package/per_dataset/texas/results/E03_random_split_stability/E03_src_v16c_summary.csv,87.75862068965517,2.49851323210163,86.31578947368422,4.07682457495517
+wisconsin,src_v16c,10,0.8525,0.0153659074288215,0.8431372549019608,0.042357782342535,default,/root/autodl-tmp/srcv16c_submission_package/per_dataset/wisconsin/results/E03_random_split_stability/E03_src_v16c_summary.csv,85.25,1.5365907428821501,84.31372549019608,4.2357782342535
+
+

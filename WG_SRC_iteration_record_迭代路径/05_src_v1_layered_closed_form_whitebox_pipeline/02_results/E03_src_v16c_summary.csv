@@ -1,0 +1,4 @@
+﻿dataset,method,n,val_mean,val_std,test_mean,test_std
+wisconsin,src_v16c,10,0.8525,0.015365907428821516,0.8431372549019608,0.042357782342535066
+
+

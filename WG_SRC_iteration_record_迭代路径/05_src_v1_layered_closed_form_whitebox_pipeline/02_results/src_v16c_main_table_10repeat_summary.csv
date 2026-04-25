@@ -1,0 +1,5 @@
+﻿dataset,method,n,val_mean,val_std,test_mean,test_std,train_size_mean,val_size_mean,test_size_mean
+chameleon,src_v16c,10,0.7279835390946502,0.022862825784179325,0.7247807017543859,0.018528935461456984,1092.0,729.0,456.0
+squirrel,src_v16c,1,0.6231971153846154,,0.6234390009606148,,2496.0,1664.0,1041.0
+
+

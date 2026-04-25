@@ -1,0 +1,47 @@
+﻿{
+  "dataset": "chameleon",
+  "data_base": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon",
+  "raw_root": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon\\geom_gcn\\raw",
+  "out_dir": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\scripts\\results_src_v16_reliability_antihub_audit_chameleon",
+  "num_splits": 10,
+  "val_mean": 0.720713305898491,
+  "val_std": 0.01832392809821296,
+  "test_mean": 0.7054824561403509,
+  "test_std": 0.018322890083600257,
+  "topk_grid": [
+    3000,
+    4000,
+    5000,
+    6000
+  ],
+  "dim_grid": [
+    24,
+    32,
+    48,
+    64
+  ],
+  "ridge_alpha_grid": [
+    0.1,
+    0.5,
+    1.0,
+    5.0
+  ],
+  "w_base_grid": [
+    0.3,
+    0.5,
+    0.6,
+    0.7
+  ],
+  "alpha_rel_grid": [
+    0.5,
+    1.0,
+    1.5
+  ],
+  "beta_hub_grid": [
+    0.0,
+    0.2,
+    0.5
+  ],
+  "elapsed_sec": 3784.2510240077972
+}
+

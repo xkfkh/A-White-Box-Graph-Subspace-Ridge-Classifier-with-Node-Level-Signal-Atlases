@@ -1,0 +1,14 @@
+﻿{
+  "dataset": "chameleon",
+  "data_base": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon",
+  "raw_root": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data\\chameleon\\geom_gcn\\raw",
+  "src_v14_file": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\src_v14\\algo1_multihop_pca_perclass_dim_floor_coverage_branch_src_v14.py",
+  "out_dir": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\wgsrc_development_workspace\\scripts\\results_src_v15_score_pairwise_audit_chameleon",
+  "dim_candidates": "[16, 24, 32, 48, 64]",
+  "num_splits": 10,
+  "val_mean": 0.7386831275720165,
+  "val_std": 0.015775034293552797,
+  "test_mean": 0.6923245614035087,
+  "test_std": 0.021126742726537428
+}
+

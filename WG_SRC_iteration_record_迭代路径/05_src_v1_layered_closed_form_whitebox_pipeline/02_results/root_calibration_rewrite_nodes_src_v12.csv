@@ -1,0 +1,13 @@
+﻿split,node_idx_sorted,original_node_id,true_label,initial_root_pred,calibrated_root_pred,change_kind
+2,578,578,4,1,2,redirect
+2,1096,1096,0,1,0,fixed
+2,1105,1105,0,1,0,fixed
+2,1447,1447,0,1,0,fixed
+5,249,249,1,1,0,broken
+5,476,476,0,1,0,fixed
+5,1842,1842,2,1,2,fixed
+8,416,416,0,2,0,fixed
+8,551,551,2,2,1,broken
+8,2220,2220,2,2,3,broken
+
+
