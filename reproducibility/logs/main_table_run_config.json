@@ -1,0 +1,17 @@
+{
+  "data_root": "D:\\桌面\\MSR实验复现与创新\\planetoid\\data",
+  "baseline_csv": "D:\\桌面\\MSR实验复现与创新\\experiments_g1\\claude_whitebox_g1_v2\\src_v16c_paper_experiments\\baselines\\pyg_baselines_fair_best_by_val_partial(1).csv",
+  "datasets": [
+    "actor"
+  ],
+  "max_repeats": 10,
+  "grid": "default",
+  "protocol": [
+    "feature_selection_train_only",
+    "pca_fit_train_only",
+    "ridge_fit_train_only",
+    "hyperparameter_selection_validation_only",
+    "test_used_only_for_final_reporting",
+    "row_appended_immediately_for_resume"
+  ]
+}
